@@ -1,6 +1,5 @@
 package com.codesnippet.weather_service.service;
 
-import com.codesnippet.weather_service.entity.Role;
 import com.codesnippet.weather_service.entity.Users;
 import com.codesnippet.weather_service.repository.UserDetailsRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -18,16 +17,7 @@ public class AdminUserInitializer {
                 Users admin = new Users();
                 admin.setUsername("admin");
                 admin.setPassword(passwordEncoder.encode("admin1234")); // Securely store password
-                admin.setRole(Role.ADMIN);
-
-                userRepository.save(admin);
-                System.out.println("Default admin user created!");
-            }
-            if (userRepository.findByUsername("user").isEmpty()) {
-                Users admin = new Users();
-                admin.setUsername("user");
-                admin.setPassword(passwordEncoder.encode("user1234")); // Securely store password
-                admin.setRole(Role.USER);
+                admin.setRole("ROLE_ADMIN");
 
                 userRepository.save(admin);
                 System.out.println("Default admin user created!");
